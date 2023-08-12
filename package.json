@@ -1,0 +1,27 @@
+{
+  "name": "cloud-module",
+  "version": "1.0.0",
+  "description": "The CYF Cloud Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeYourFuture/CYF-Cloud-Module.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeYourFuture/CYF-Cloud-Module/issues"
+  },
+  "homepage": "https://github.com/CodeYourFuture/CYF-Cloud-Module#readme",
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.8",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "codemirror": "^6.0.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-go-template": "^0.0.13"
+  }
+}

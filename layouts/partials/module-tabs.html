@@ -1,0 +1,48 @@
+{{.Page.Store.Set "hasTabs" true }}
+{{ $parent := .Section }}
+<tab-panels class="c-tabs c-tabs--module">
+  <div class="c-tabs__list" id="{{ .Title | urlize }}" role="tablist">
+      <button
+        id="timeline"
+        data-toggle="tab"
+        class="c-tabs__tab is-active e-heading__3"
+        role="tab"
+        aria-controls="timeline-panel"
+        aria-selected="true"
+        >Timeline</button>
+      <button
+        id="context"
+        data-toggle="tab"
+        class="c-tabs__tab e-heading__3"
+        role="tab"
+        aria-controls="context-panel"
+        >Context</button>
+    </div>
+  <div class="c-tabs__group">
+   <div class="c-tabs__panel is-active" role="tabpanel" aria-labelledby="#timeline" id="timeline-panel">
+    <ol class="c-timeline">
+      {{ range where .Site.Pages "Section" $parent }}
+        {{ if in .Params.menu_level
+          "module"
+        }}
+          <li class="c-timeline__entry">
+            <a class="c-timeline__post" href="{{ .Permalink }}"
+              ><h3 class="c-timeline__title">{{ .Title }}</h3></a
+            >
+          </li>
+        {{ end }}
+      {{ end }}
+    </ol>
+  </div>
+ <div id="context-panel" class="c-tabs__panel" role="tabpanel" aria-labelledby="#context">
+    <div class="c-block__list">
+      <!-- Blocks will appear here in order listed in the blocks list in the front matter -->
+      {{ range .Params.blocks }}
+        {{ partial "block/block.html" (dict "block" . "Page"
+          $.Page)
+        }}
+      {{ end }}
+    </div>
+  </div>
+</tab-panels>
+

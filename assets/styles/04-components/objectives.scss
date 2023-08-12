@@ -1,0 +1,39 @@
+// TODO I want to intercede in the gfm task list with a render hook as their version is not accessible
+// so I've left the classes off for now until I understand how to do this
+.c-objectives {
+  margin-bottom: var(--theme-spacing--gutter);
+  &__title {
+    margin-bottom: 0;
+  }
+}
+
+// markdown checklist we are trying to hijack from gfm
+
+ul:has(input[type="checkbox"]),
+li:has(input[type="checkbox"]) {
+  padding: 0;
+  margin: 0 0 var(--theme-spacing--1) 0;
+  list-style: none;
+  &::marker {
+    content: "☑️ ";
+    font-size: 22px;
+  }
+  label {
+    padding-left: calc(22px + 1ch);
+    margin-left: calc(-1 * calc(22px + 1ch));
+    cursor: pointer;
+  }
+}
+li:has(input[type="checkbox"]:checked) {
+  &::marker {
+    content: "✅ ";
+    font-size: 21.5px; // this magic number is just because the untick is smaller than the tick and the pixel-bump grieves me
+  }
+}
+ul:has(input[type="checkbox"]) {
+  margin: 0 0 var(--theme-spacing--3) 1.5em;
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+  }
+}

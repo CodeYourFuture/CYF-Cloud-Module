@@ -1,0 +1,38 @@
+.c-card {
+  --smallest-width-with-timeline: 250px;
+  @include grid-assign(image, description, title);
+  @include block(false, true, true, true);
+  grid-template:
+    ". .           . .     ." var(--theme-spacing--gutter)
+    ". title       . image ." auto
+    ". description . image ." 1fr
+    ". .           . .     ." var(--theme-spacing--gutter)
+    / var(--theme-spacing--gutter) minmax(
+      var(--smallest-width-with-timeline),
+      calc(var(--theme-spacing--container-min) * 2)
+    )
+    var(--theme-spacing--2) 1fr var(--theme-spacing--gutter);
+
+  @include on-event {
+    transform: translate(0.5px, 1px);
+    box-shadow: 0px 0px 0 var(--theme-color--pop),
+      0px 0px 0 var(--theme-color--accent);
+  }
+  &__title {
+    line-height: 1.875;
+    font-weight: 500;
+  }
+  &__description {
+    margin: 0 auto auto 0; // pin top left
+  }
+  &__image {
+    // it's an emoji actually - we dumped images
+    font-size: clamp(24px, calc(24px + 5vw), 280px);
+    text-align: right;
+    transition: filter 10s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    @include on-event(false, ".c-card") {
+      filter: grayscale(0) hue-rotate(360deg);
+    }
+  }
+}

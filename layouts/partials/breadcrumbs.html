@@ -1,0 +1,64 @@
+{{ with .Parent }}
+  <nav class="c-breadcrumbs">
+    <ol class="c-breadcrumbs__list">
+      {{- range after 1 .Ancestors.Reverse }}
+        <li class="c-breadcrumbs__item">
+          <a class="c-breadcrumbs__link" href="{{ .Permalink }}"
+            >{{ .Title }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              width="24px"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="c-breadcrumbs__icon">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+        </li>
+      {{- end }}
+      <li class="c-breadcrumbs__item">
+        <a class="c-breadcrumbs__link" href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+    </ol>
+  </nav>
+  {{/* Here's a tiny drop of structured data for google's hungry maw
+    https://developers.google.com/search/docs/appearance/structured-data/breadcrumb
+    https://search.google.com/test/rich-results/
+    We only show the JSON if we show the HTML or we get dinged
+    Note that we must NOT quote the url inside this JSON or Hugo will escape the backslashes
+    https://www.godo.dev/tutorials/hugo-fix-json-ld-escaping/
+  */}}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{ range $index, $element := .Ancestors.Reverse }}
+    {
+      "@type": "ListItem",
+      "position": {{add 1 $index}},
+      "name": "{{- .Title -}}",
+      "item": {{- .Permalink -}}
+    },
+    {{- end -}}
+    {
+      "@type": "ListItem",
+      "position": {{ add 2 (len .Ancestors) }},
+      "name": "{{.Title}}",
+      "item": {{- .Permalink -}}
+    },
+    {
+      "@type": "ListItem",
+      "position": {{ add 3 (len .Ancestors)}},
+      "name": "{{$.Page.Title}}",
+      "item": {{- .Permalink -}}
+    }
+  ]
+}
+</script>
+{{ end }}
