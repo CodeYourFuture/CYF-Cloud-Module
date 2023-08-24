@@ -8,7 +8,7 @@ fi
 
 MODULE_NAME=$1
 MODULE_DIR="content/$MODULE_NAME"
-SPRINT_DIR="$MODULE_DIR/sprints"
+SPRINT_DIR="$MODULE_DIR/weeks"
 BLOCKS_DIR="$MODULE_DIR/blocks"
 PRODUCT_DIR="$MODULE_DIR/product"
 
@@ -51,9 +51,9 @@ for i in {1..4}; do
   SPRINT_PATH="$SPRINT_DIR/$SPRINT_NAME"
   mkdir -p $SPRINT_PATH
   echo "+++
-title = 'Sprint $i'
+title = 'Week $i'
 description = 'The plan for the week'
-layout = 'sprint'
+layout = 'week'
 emoji= '⏱️'
 menu_level = ['module']
 weight = $((i + 1))
@@ -70,7 +70,7 @@ weight = $((i + 1))
 title = '$file'
 layout = '$file'
 emoji= '📝'
-menu_level = ['sprint']
+menu_level = ['week']
 weight = $MENU_ORDER
 backlog= 'Module-$MODULE_NAME'
 backlog_filter= 'Week $i'

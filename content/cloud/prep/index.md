@@ -16,12 +16,13 @@ backlog_filter= 'cloud'
 
 ## Module Content
 
-The Cloud Module 2022 will be a 6-weeks course aimed for CYF graduates who has already completed the Full Stack Software Development Course. In short, the 6 weeks will look like this:
+The Cloud Module will be a 5-weeks course aimed for CYF graduates who has already completed the Full Stack Software Development Course. In short, the 5 weeks will look like this:
 
 - Week 0 - Module entry challenge and forming study groups.
-- Week 1 - Cloud, datacentres and introduction to virtual machines.
-- Week 2 - Basic networking 1. Introduction to API/ secure datasource basic cloud networks, firewalls.
-- Week 3 - Basic networking 2. Extending from week 2 to introduce VPC/VNET private networking and securing the datasource. Maybe some advance networking?
-- Week 4 - Automation and server configurations.
-- Week 5 - Monitoring and troubleshooting.
-- Week 6 - Scenario projects. Aim to specialise in at least one of 3 industry standard fields (Engineer, Solution Architect/Designer and Cybersecurity/ Security engineering).
+- Week 1: Intro to Cloud - Servers, Storage, Databases, and CDN (maybe Intro as a prep and the rest as week1)
+- Week 2: CI/CD Using GitHub Actions
+- Week 3: Docker and Containers (maybe intro to k8s, I may need help with that)
+- Week 4: Infrastructure as Code (IaC)
+- Week 5: Scalability, Monitoring, and Best Practices
+
+## Entry Challenge Test

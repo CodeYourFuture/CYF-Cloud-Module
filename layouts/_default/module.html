@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ partial "page-header.html" . }}
   {{ with .Content }}<article class="c-copy">{{ . }}</article>{{ end }}
-  <!-- timeline of module: prep, sprints, backlog, success -->
+  <!-- timeline of module: prep, weeks, backlog, success -->
   <!-- if there are blocks on this page, pop them in a deselected tab-->
   {{ $parent := .Section }}
   {{ if .Params.blocks }}
