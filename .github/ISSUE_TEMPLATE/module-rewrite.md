@@ -10,7 +10,7 @@ assignees: ""
 Module(s):
 Week(s):
 
-Rewriting a week in the curriculum will often involve updating different sections of the curriculum, including the backlog and workshops. You can use this issue to organise the different changes in the curriculum content for a week at CYF.
+Rewriting a week in the curriculum will often involve updating different sections of the curriculum, including the coursework and workshops. You can use this issue to organise the different changes in the curriculum content for a week at CYF.
 
 ## Prep
 
@@ -27,10 +27,10 @@ Prep material is the combination of explanations and activities that trainees wi
 <!-- How has the day plan changed? -->
 <!-- Link to any workshop content that has changed -->
 
-## Backlog
+## Coursework
 
-<!-- The backlog tasks and module repo may need to change in response to a change in the prep content>
-<!-- How is the backlog changing?  -->
+<!-- The coursework tasks and module repo may need to change in response to a change in the prep content>
+<!-- How is the coursework changing?  -->
 
 **Who might need to know about this change?**
 

@@ -5,8 +5,8 @@ layout = 'prep'
 emoji= '📝'
 menu_level = ['module']
 weight = 1
-backlog= 'Module-cloud'
-backlog_filter= 'cloud'
+coursework= 'Module-cloud'
+coursework_filter= 'cloud'
 +++
 
 ## Learning Objectives

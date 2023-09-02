@@ -1,6 +1,6 @@
-{{ $repo := .Params.backlog }}
+{{ $repo := .Params.coursework }}
 {{ $issues := print .Site.Params.orgapi $repo "/issues" }}
-{{ $filter := .Params.backlog_filter }}
+{{ $filter := .Params.coursework_filter }}
 <!-- api call -->
 {{ $headers := (dict) }}
 {{ if ne (os.Getenv "CYF_CLOUDMODULE_GITHUB_BEARER_TOKEN") "" }}

@@ -3,9 +3,9 @@ title = 'week-plan'
 layout = 'week-plan'
 emoji= '📝'
 menu_level = ['week']
-weight = 3
-backlog= 'Module-cloud'
-backlog_filter= 'Week 4'
+weight = 2
+coursework= 'Module-cloud'
+coursework_filter= 'Week 4'
 +++
 
 ## Understanding the Need for Infrastructure as Code
