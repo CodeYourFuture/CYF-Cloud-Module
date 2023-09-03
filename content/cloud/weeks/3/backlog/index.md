@@ -16,4 +16,4 @@ backlog_filter= 'Week 3'
 
 ### Docker Database
 
-## Deploy docker to AWS
+## Deploy docker images to AWS

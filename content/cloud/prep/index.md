@@ -26,3 +26,9 @@ The Cloud Module will be a 5-weeks course aimed for CYF graduates who has alread
 - Week 5: Scalability, Monitoring, and Best Practices
 
 ## Entry Challenge Test
+
+### Setup AWS account
+
+### Implement MFA authentication
+
+### Setup Budget Alerts

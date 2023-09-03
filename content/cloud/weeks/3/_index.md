@@ -1,5 +1,5 @@
 +++
-title = 'Week 3'
+title = 'Week 3 - Containers'
 description = 'The plan for the week'
 layout = 'week'
 emoji= '⏱️'
