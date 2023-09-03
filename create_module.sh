@@ -27,7 +27,7 @@ menu = ['syllabus']
 
 " > $MODULE_DIR/_index.md
 
-FILES=("prep" "backlog" "success")
+FILES=("prep" "coursework" "success")
 MENU_ORDER=1
 for file in "${FILES[@]}"; do
   mkdir -p $MODULE_DIR/$file
@@ -38,8 +38,8 @@ layout = '$file'
 emoji= '📝'
 menu_level = ['module']
 weight = $MENU_ORDER
-backlog= 'Module-$MODULE_NAME'
-backlog_filter= '$MODULE_NAME'
+coursework= 'Module-$MODULE_NAME'
+coursework_filter= '$MODULE_NAME'
 +++
 
 " > $MODULE_DIR/$file/index.md
@@ -61,7 +61,7 @@ weight = $((i + 1))
 
 " > $SPRINT_PATH/_index.md
 
-  SPRINT_FILES=("prep" "backlog" "week-plan" "success")
+  SPRINT_FILES=("prep" "coursework" "week-plan" "success")
   MENU_ORDER=1
 
   for file in "${SPRINT_FILES[@]}"; do
@@ -72,8 +72,8 @@ layout = '$file'
 emoji= '📝'
 menu_level = ['week']
 weight = $MENU_ORDER
-backlog= 'Module-$MODULE_NAME'
-backlog_filter= 'Week $i'
+coursework= 'Module-$MODULE_NAME'
+coursework_filter= 'Week $i'
 +++
 
 " > $SPRINT_PATH/$file/index.md

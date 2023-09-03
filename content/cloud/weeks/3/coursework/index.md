@@ -1,11 +1,11 @@
 +++
-title = 'backlog'
-layout = 'backlog'
+title = 'coursework'
+layout = 'coursework'
 emoji= '📝'
 menu_level = ['week']
-weight = 2
-backlog= 'Module-cloud'
-backlog_filter= 'Week 3'
+weight = 3
+coursework= 'Module-cloud'
+coursework_filter= 'Week 3'
 +++
 
 ## Dockerize CYF Hotel

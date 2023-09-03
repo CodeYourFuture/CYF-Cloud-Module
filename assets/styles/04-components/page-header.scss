@@ -7,7 +7,7 @@
     subtitle,
     description,
     breadcrumbs,
-    backlog,
+    coursework,
     lastmod,
     toc,
     edit
@@ -26,7 +26,7 @@
       "title          title        title    " min-content
       ".              .            .        " var(--gap)
       "description    description  description" min-content
-      "backlog        .   .        " 1fr
+      "coursework        .   .        " 1fr
       ".              .   .        " var(--gap)
       / 1fr var(--gap) minmax(0, 1fr);
 

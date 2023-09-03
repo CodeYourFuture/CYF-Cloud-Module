@@ -33,12 +33,13 @@
         {{ end }} </span
       >{{ .Page.Title }}
     </h1>
-    {{ if eq .Page.Params.layout "backlog" }}
-      <h2 class="c-page-header__subtitle c-page-header__backlog e-heading__3">
+    {{ if eq .Page.Params.layout "coursework" }}
+      <h2
+        class="c-page-header__subtitle c-page-header__coursework e-heading__3">
         <a
           class="c-page-header__link"
-          href="{{ .Page.Site.Params.org }}/{{ .Page.Params.backlog }}/issues"
-          >{{ .Page.Params.backlog }}
+          href="{{ .Page.Site.Params.org }}/{{ .Page.Params.coursework }}/issues"
+          >{{ .Page.Params.coursework }}
           🔗</a
         >
       </h2>
