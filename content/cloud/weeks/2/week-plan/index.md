@@ -31,6 +31,14 @@ GitHub Actions is an automation framework that runs in your GitHub repository. I
 **Steps**: Individual tasks within a job.
 **Actions**: Pre-built steps that you can use in your jobs.
 
+#### Exercise: Review a github action from previous coursework
+
+Github Actions have been present in the course, now we are going to take a look at them and review them.
+
+Back in Javascript 1 Week 1, we can see an existing workflow for mandatory tests: <https://github.com/CodeYourFuture/JavaScript-Core-1-Coursework-Week1/blob/master/.github/workflows/mandatory-tests.yml>
+
+You should have completed the Coursework for Javascript 1 Week 1, this exercise is for you to find your pull request and see the Github Action workflow. Go to <https://github.com/CodeYourFuture/JavaScript-Core-1-Coursework-Week1> to find your Pull Request or go directly to the Actions <https://github.com/CodeYourFuture/JavaScript-Core-1-Coursework-Week1/actions> to find your workflow run.
+
 ## Setting up a Simple Workflow
 
 To set up a simple GitHub Actions workflow, navigate to your GitHub repository and then to the Actions tab. From there, you can create a new workflow.
@@ -47,10 +55,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 ```
 
-This YAML file specifies a single job called build that runs on an ubuntu-latest runner machine. The job has a single step that uses actions/checkout@v2 to download the code from the GitHub repository.
+This YAML file specifies a single job called build that runs on an ubuntu-latest runner machine. The job has a single step that uses actions/checkout@v3 to download the code from the GitHub repository.
+
+For more information on Github Actions Syntax refer to their documentation: <https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions>
 
 ## Adding Testing Stages
 
@@ -64,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Install Dependencies
       run: npm install
     - name: Run tests
@@ -112,7 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Install Dependencies
       run: npm install
     - name: Run tests
@@ -123,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Deploy
       run: npm deploy
 ```
@@ -137,3 +147,47 @@ Understanding the Workflow
 By defining both jobs in the same YAML file, GitHub Actions will know to run them as part of the same workflow. The needs keyword ensures that the deploy job will only run if the test job completes successfully, adding a layer of protection against bugs making their way into production.
 
 And that's how you set up a GitHub Actions workflow with multiple jobs. This allows you to make your CI/CD process more robust and maintainable.
+
+### Environment Variables and Secrets
+
+In any development workflow, especially one that involves deployments, it's common to have configuration settings that should not be hard-coded in the codebase. This includes API keys, database URLs, and other sensitive information. GitHub Actions allows the use of environment variables and secrets to manage these configurations securely.
+
+#### Github Environment Variables
+
+Environment variables are key-value pairs that you can create and modify as part of your workflow. They can be accessed in your GitHub Actions YAML file via env context. For example, to set a Node.js environment, you can do:
+
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+```
+
+And then use it in a script like this:
+
+```yaml
+    - name: Using Environment Variable
+      run: echo Node environment is ${{ env.NODE_ENV }}
+```
+
+#### Github Secrets
+
+Secrets are similar to environment variables but are encrypted and only exposed to selected actions, adding an extra layer of security. They are ideal for storing sensitive data like passwords and API keys.
+
+You can add secrets via GitHub by navigating to your repository, then clicking on *Settings* -> *Secrets* -> *New Repository Secret*. Enter the secret's name and value, and it will be encrypted and stored securely.
+
+To use a secret, you refer to it using secrets context in your YAML file like this:
+
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Accessing secret
+      run: echo Accessing secret ${{ secrets.MY_SECRET }}
+```
+
+In the example above, MY_SECRET would be replaced by the actual secret's name you've stored in the GitHub repository.
+
+For more information about environment variable refer to their documentation: <https://docs.github.com/en/actions/learn-github-actions/variables> and for information about secrets refer to: <https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions>
