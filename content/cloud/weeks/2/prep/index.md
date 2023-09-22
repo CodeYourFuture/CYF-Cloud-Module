@@ -8,3 +8,4 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 2'
 +++
 
+Complete week 1.
