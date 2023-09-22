@@ -14,13 +14,23 @@ coursework_filter= 'Week 1'
 
 A server is a specialized computer designed to process requests and deliver data to another computer over the internet or a local network. While any computer can technically be configured to act as a server, most servers are dedicated, meaning they perform no other tasks than server duties.
 
+The fundamental role of a server remains consistent, but how we deploy and manage servers has evolved with the advent of cloud computing.
+
+#### On-Premise Servers
+
+On-premise servers are physically located within an organization's premises. This traditional setup often requires a supporting infrastructure, including cooling systems and physical security measures. There's a high upfront capital expense due to the need for physical hardware, infrastructure, and ongoing maintenance. While it can offer optimized performance for internal users since data doesn't traverse outside the local network, it comes with the responsibility of direct maintenance and more rigid scalability. One distinct advantage is that organizations have maximum control and customization possibilities because they have direct access to the hardware.
+
+#### Cloud Servers
+
+In contrast, cloud servers run in a cloud computing environment and can be accessed remotely. Examples include Amazon EC2 instances or Microsoft Azure VMs. Unlike on-premise servers, cloud servers operate mainly on a pay-as-you-go model, eliminating high upfront costs. This model also offers rapid scalability; organizations can easily scale up or down based on demand without manual intervention for hardware provisioning. Maintenance is more manageable in the cloud. Providers handle most of the maintenance tasks, including software updates, security patches, and managing the physical infrastructure. The cloud model grants organizations flexibility, scalability, and potential cost savings, which is why many are transitioning to this setup.
+
 #### Key Characteristics of Servers
 
 High Reliability: Built to be robust and reliable in handling various tasks under different conditions.
 Scalability: Capable of being expanded in size or volume to handle increased loads.
 Security: Equipped with advanced security protocols to protect data and resources.
 
-### Why Virtualization?
+### Virtualization
 
 Virtualization is the technology that lets you create multiple simulated environments or dedicated resources from a single, physical hardware system, making your infrastructure far more efficient and scalable.
 
