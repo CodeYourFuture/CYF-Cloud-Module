@@ -18,4 +18,4 @@ This is a requirement. The official website has decent documentation on how to d
 
 ### Go over the Docker 101 tutorial
 
-https://www.docker.com/101-tutorial/ is a interesting tutorial from the official website to get yourself familiar with Docker. Go through it (note that the whole tutorial runs on a Docker container locally)
+https://www.docker.com/101-tutorial/ is a interesting tutorial from the official website to get yourself familiar with Docker. Go through it. Note that the whole tutorial runs on a Docker container locally - don't stop at installing Docker and running the container!

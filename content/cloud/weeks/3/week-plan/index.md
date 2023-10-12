@@ -8,12 +8,6 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 3'
 +++
 
-## Introduction to Containers and Docker
+## Weekplan
 
-## Dockerizing a Simple Application
-
-## Docker Commands and Docker Compose
-
-## Introduction to Container Orchestration with Kubernetes
-
-## Deploying Containers to Cloud
+See the coursework section
