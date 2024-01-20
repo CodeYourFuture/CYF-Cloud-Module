@@ -9,9 +9,9 @@ coursework= 'Module-cloud'
 coursework_filter= 'cloud'
 +++
 
-## Entry Challenge Test
+## Pre-requisites
 
-The challenge test is to have CYF Hotel project (Frontend, Backend and database) fully deployed to Render or Netlify.
+You must already have a project (e.g. CYF Hotel project, Full Stack Assessment) which has Frontend, Backend, and database fully deployed to some public hosting such as Render or Netlify.
 
 ## Setup AWS Account
 
