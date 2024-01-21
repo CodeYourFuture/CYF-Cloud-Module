@@ -12,6 +12,12 @@ By the end of the coursework you should have the a Frontend, Backend and Databas
 
 We recommend using the "CYF Hotel" project from the course but you are welcome to use any project you like.
 
+## Note: Getting Help
+
+If you are doing this for the first time, **this will be hard**. You **must** reach out to Volunteers to help you. Your ability to ask for help is be actively assessed during this time.
+
+You are **not** expected to be able to complete this module completely independently. You **are** expected to get help from volunteers.
+
 ## Deploy your Frontend to S3
 
 In this section, you will deploy the the frontend to S3.

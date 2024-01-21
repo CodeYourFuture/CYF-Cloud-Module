@@ -17,6 +17,12 @@ This module is designed to introduce the concepts of cloud computing and how it 
 - Dockerise an application and deploy it to the cloud
 - Use Infrastructure-as-Code to setup and manage cloud resources
 
+### Asking for Help
+
+If you are doing this for the first time, **this will be hard**. You **must** reach out to Volunteers to help you. Your ability to ask for help is be actively assessed during this time.
+
+You are not expected to be able to complete this module without the help of volunteers.
+
 ### Entry Criteria
 
 To be able to start this module **a Trainee must have independently completed all of the steps in the entry criteria page** of this website.
