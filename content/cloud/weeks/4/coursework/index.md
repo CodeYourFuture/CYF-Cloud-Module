@@ -8,60 +8,36 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 4'
 +++
 
-## Coursework: Infrastructure as Code for CYF Hotel
+## Setup Scalability And Monitoring for CYF Hotel
 
-### Infrastructure as Code for CYF Hotel Frontend in S3
+This week, you'll focus on implementing scalability features and monitoring capabilities for the CYF Hotel project. Below are the specific tasks you'll work on:
 
-1. **Objective**: Use Terraform to deploy your CYF Hotel frontend to an S3 bucket.
-2. **Steps**:
-    - Write a Terraform configuration file (`main.tf`) to define the S3 bucket.
-    - Include the necessary configurations like ACL, policy, and versioning.
-    - Deploy the code to AWS.
-3. **Outcome**: After running `terraform apply`, you should see the CYF Hotel frontend live on the S3 bucket URL.
+### Setup EC2 Load Balancers
 
-### Infrastructure as Code for CYF Hotel Backend in EC2
+**Create EC2 Load Balancer**: In the AWS Management Console, set up a new EC2 Load Balancer.
 
-1. **Objective**: Use Terraform to deploy your CYF Hotel backend to an EC2 instance.
-2. **Steps**:
-    - Write a Terraform configuration file (`main.tf`) to define the EC2 instance.
-    - Include configurations for security groups, key pairs, and IAM roles if necessary.
-    - Deploy the code to AWS.
-3. **Outcome**: After running `terraform apply`, the backend should be running on an AWS EC2 instance accessible via its IP address.
+**Configure Load Balancer**: Add rules to your Load Balancer to route traffic to your EC2 instances.
 
-### Infrastructure as Code for CYF Hotel Database in RDS
+**Test Load Balancer**: Ensure that the Load Balancer is distributing traffic across multiple EC2 instances.
 
-1. **Objective**: Use Terraform to deploy your CYF Hotel database to an RDS instance.
-2. **Steps**:
-    - Write a Terraform configuration file (`main.tf`) for the RDS database.
-    - Include necessary configurations like database engine, version, and credentials.
-    - Deploy the code to AWS.
-3. **Outcome**: After running `terraform apply`, the database should be live and reachable on the RDS instance.
+### Set High Availability for RDS
 
-### Extra Exercise: Using Terraform Modules and Remote State
+**Modify RDS Instance**: In the AWS RDS Dashboard, modify your existing RDS instance to include Multi-AZ deployments for MySQL, PostgreSQL, SQL Server, or Oracle.
 
-#### Objective
+### Enable CloudWatch Alarms for CYF Hotel
 
-In this exercise, you will utilize a Terraform module to create a reusable configuration for S3 buckets. Additionally, you'll implement remote state management using an S3 bucket.
+**Navigate to CloudWatch**: In the AWS Management Console, navigate to the CloudWatch service.
 
-#### Steps
+**Create CPU Utilization Alarm**: Set up an alarm to monitor the CPU utilization of your EC2 instances.
 
-1. **Create a Terraform Module for S3 Buckets**
-    - Create a new directory named `s3_module` and place a new Terraform file inside it, e.g., `main.tf`.
-    - Define the Terraform code for an S3 bucket inside this file.
+**Create RDS Read/Write Alarm**: Set up another alarm to monitor the Read and Write capacity of your RDS instance.
 
-2. **Implement Remote State in S3**
-    - In your main Terraform configuration (`main.tf`), configure the backend for remote state using S3.
+### Extra Task: Use CloudWatch Metrics to Create Dashboards
 
-3. **Initialize and Apply**
-    - Initialize your Terraform project.
-    - Apply the configuration to create the S3 bucket using the module and configure remote state.
+**Create Custom Dashboard**: Utilize CloudWatch Metrics to create a custom dashboard that shows metrics for both EC2 and RDS services.
 
-#### Validation
+By completing these tasks, you'll gain practical experience in implementing scalability and monitoring within AWS, essential for maintaining a healthy and efficient application.
 
-- Confirm that the S3 bucket was created as expected.
-- Check the S3 bucket where you store the remote state to ensure that the `terraform.tfstate` file is present.
+### Extra Task: Use Terraform
 
-#### References
-
-- [Terraform Modules](https://developer.hashicorp.com/terraform/language/modules)
-- [Terraform S3 Backend](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
+**Terraform**: update the existing terraform files to add the previous steps in this coursework.

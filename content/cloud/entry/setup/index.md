@@ -1,19 +1,26 @@
 +++
-title = 'prep'
-description = 'prep description'
-layout = 'prep'
+title = 'setup'
+layout = 'setup'
 emoji= '📝'
-menu_level = ['module']
-weight = 1
+menu_level = ['week']
+weight = 2
 coursework= 'Module-cloud'
-coursework_filter= 'cloud'
+coursework_filter= 'entry'
 +++
 
-## Pre-requisites
+## Setup
 
-You must already have a project (e.g. CYF Hotel project, Full Stack Assessment) which has Frontend, Backend, and database fully deployed to some public hosting such as Render or Netlify.
+### 1. Ensure you have a project deployed
 
-## Setup AWS Account
+You must already have a project (e.g. CYF Hotel project, Full Stack Assessment) which has
+
+- A Frontend (e.g. a React App)
+- A Backend (e.g. an Express App)
+- A Database (e.g. a Postgres or MySql or MongoDB Database)
+
+fully deployed to some public hosting such as Render or Netlify. If you do not have a project, please speak to your teacher or the module leader.
+
+### 2. Setup AWS Account
 
 Before starting this course, it's essential to prepare by setting up some tools and services that we'll be using throughout the course. Follow these steps:
 
@@ -21,7 +28,7 @@ Before starting this course, it's essential to prepare by setting up some tools 
 
 2. **Complete Signup**: Follow the on-screen instructions. You'll need to provide a credit card for verification, but most of the services we'll be using fall under the AWS Free Tier.
 
-## Implement MFA Authentication
+#### 2.1 Implement MFA Authentication
 
 1. **Login to AWS Console**: After your account is set up, log in to the [AWS Management Console](https://aws.amazon.com/console/).
 
@@ -29,7 +36,7 @@ Before starting this course, it's essential to prepare by setting up some tools 
 
 3. **Set Up MFA**: In IAM, navigate to the "Dashboard," then click on "Activate MFA on your root account" and follow the instructions to set up Multi-Factor Authentication (MFA).
 
-## Setup Budget Alerts
+#### 2.2 Setup Budget Alerts
 
 1. **Navigate to AWS Budgets**: From the AWS Console, find and click on "Services," then select "Budgets" under Management & Governance.
 

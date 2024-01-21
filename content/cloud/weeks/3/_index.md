@@ -1,10 +1,8 @@
 +++
-title = 'Week 3 - Containers'
+title = 'Week 3 - Infrastructure as Code'
 description = 'The plan for the week'
 layout = 'week'
 emoji= '⏱️'
 menu_level = ['module']
-weight = 4
+weight = 5
 +++
-
-

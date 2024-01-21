@@ -8,227 +8,153 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 4'
 +++
 
-## Understanding the Need for Infrastructure as Code
+## Introduction to Scalability Concepts
 
-### What is Infrastructure as Code?
+### What is Scalability?
 
-Infrastructure as Code (IaC) is the practice of managing and provisioning your cloud resources through code, rather than manual operations or one-off scripts. Essentially, it lets you script your infrastructure, the same way you script your application code. In doing so, IaC allows you to apply the principles of software development, such as version control and continuous integration, to your infrastructure.
+Scalability is the capability of a system to handle a growing amount of work or its potential to be enlarged to accommodate that growth. In the context of cloud computing and web applications, scalability often refers to adding more resources or modifying the system architecture to manage increased load.
 
-#### Why is IaC Needed?
+Let's consider a hypothetical social media platform as an example. When the platform is new and has a small number of users, a single server might be sufficient to handle the traffic and data. But what happens when the platform goes viral and suddenly attracts millions of users?
 
-- **Consistency**: IaC allows for a consistent and standardized environment, which reduces errors that can occur when infrastructure is set up manually.
-- **Scalability**: IaC makes it easier to scale infrastructure up or down in response to demand.
-- **Version Control**: Infrastructure can be treated like any other codebase, enabling you to use version control systems to track changes and rollback if needed.
-- **Collaboration**: Developers and operations can work together more seamlessly. Infrastructure becomes part of the application development process.
-- **Cost-Efficiency**: By automating repetitive tasks, you save both time and resources, thus reducing operational costs.
+- **Database Queries:** The number of queries hitting the database will grow exponentially.
 
-### The Evolution from Manual Operations to IaC
+- **File Storage:** Photos, videos, and other media files will consume more and more storage.
 
-- **Manual Operations**: Initially, system administrators would manually configure servers and other resources. This was time-consuming and error-prone.
-- **Scripting**: Automating configurations through scripts improved the speed but still lacked standardization and could be hard to manage for complex systems.
-- **Configuration Management Tools**: Tools like Ansible, Chef, and Puppet brought more structure but were often specific to certain types of operations.
-- **Infrastructure as Code**: IaC brings a holistic approach, where the entire environment is coded, versioned, and automated.
+- **Bandwidth:** More users mean more data transfer.
 
-## Introduction to Terraform
+To continue providing a seamless user experience, the system needs to scale. This could mean adding more servers, optimizing database queries, or increasing the bandwidth capacity.
 
-[Terraform](https://developer.hashicorp.com/terraform) is an open-source tool created by HashiCorp that allows you to define and provide infrastructure as code (IaC). It uses its own domain-specific language known as HashiCorp Configuration Language (HCL) and can manage infrastructure across multiple cloud service providers.
+So, in tech, scalability isn't just about making things bigger; it's about making them more efficient to handle a growing user base or data volume.
 
-### Why Choose Terraform?
+### Types of Scalability
 
-- **Provider Agnostic**: Terraform isn't limited to a single cloud. With [extensive provider support](https://developer.hashicorp.com/terraform/language/providers), you can manage a multi-cloud setup using one framework.
+#### Vertical Scaling
 
-- **Immutable Infrastructure**: Terraform encourages the creation of unchangeable infrastructure. If updates are needed, the current resources are replaced, ensuring consistency and reducing potential drift.
+Also known as "scaling up," this involves adding more resources like CPU, RAM, or storage to an existing server. While easy to implement, there are physical limits to how much you can scale vertically.
 
-- **Declarative Syntax**: Describe what you want with Terraform's [declarative configuration](https://developer.hashicorp.com/terraform/language), and let it handle how to achieve that state.
+#### Horizontal Scaling
 
-- **State Management**: Terraform uses a [state file](https://developer.hashicorp.com/terraform/language/state) to map real-world resources to your configuration, ensuring resources are managed correctly.
+Also known as "scaling out," this involves adding more servers to share the application's load. This is often considered more flexible but can be complex to manage.
 
-### Core Concepts in Terraform
+### Why is Scalability Important?
 
-- **Resource**: The primary component in a Terraform configuration. A [resource](https://developer.hashicorp.com/terraform/language/resources) represents an infrastructure object, such as a VM or network.
+- **Performance:** As your application grows, you'll need to ensure it remains responsive.
 
-- **Provider**: These are [plugins](https://developer.hashicorp.com/terraform/language/providers) that Terraform uses to interact with cloud service APIs, allowing it to manage resources in those clouds.
+- **Cost-Effectiveness:** Proper scalability strategies can help you use resources more efficiently, thereby saving costs.
 
-- **Variables**: Parameterize your configurations using [variables](https://developer.hashicorp.com/terraform/language/values/variables), making your IaC modular and reusable.
+- **Availability:** Scalability ensures your application can handle increased load without going down.
 
-- **State**: Terraform's [state](https://developer.hashicorp.com/terraform/language/state) maps configurations to real-world resources, tracking the resources it manages.
+### Scalability Challenges
 
-### How Does Terraform Work?
+- **Complexity:** Scaling often involves re-architecting your application, which can be complex and time-consuming.
 
-Terraform has a structured workflow:
+- **Cost:** While cloud resources are generally inexpensive, costs can add up as you scale.
 
-1. **Initialization**: Prepare a Terraform working directory with necessary [providers](https://developer.hashicorp.com/terraform/language/providers/configuration) using the `terraform init` command.
-2. **Planning**: Preview infrastructure changes with `terraform plan` to ensure alignment with your goals.
-3. **Applying**: Implement the desired infrastructure state using `terraform apply`.
-4. **Destroy**: To dismantle the infrastructure, use `terraform destroy`.
+- **Management:** Increased resources and complexity require better management strategies.
 
-For further details, dive into Terraform's [official documentation](https://developer.hashicorp.com/terraform/docs) to enhance your understanding and capabilities.
+#### High Availability
 
-## Writing Basic Infrastructure Code
+High Availability (HA) is closely related to scalability. It's about ensuring that a service is available as much as possible, even in the face of various kinds of failures (hardware failure, software crashes, etc.). While scalability focuses on accommodating more users, high availability focuses on providing reliable service to the existing user base. In many cases, these two go hand-in-hand because a system that scales well is often better equipped to maintain high availability.
 
-Now that you understand the basics of Terraform and the need for Infrastructure as Code, let's try a simple exercise that doesn't interact with any cloud providers. Instead, we'll use the `null_resource` for demonstration and learning purposes.
+For more information, you can read about [High Availability in the AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html).
 
-### Example: Using `null_resource`
+## Implementing Scalability in the Cloud
 
-Here's a simple example that uses Terraform's [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource).
+Implementing scalability in the cloud involves various strategies and technologies that help you adapt to the demands of your user base and workloads. Below are some popular methods for achieving scalability in the cloud using AWS services.
 
-```hcl
-resource "null_resource" "example" {
-  provisioner "local-exec" {
-    command = "echo Hello, World"
-  }
-}
+### Horizontal Scaling and Vertical Scaling
+
+#### Horizontal Scaling with AWS EC2
+
+In horizontal scaling, additional instances are added to or removed from a resource pool as needed. AWS EC2 offers Auto Scaling Groups that allow you to scale the number of EC2 instances up or down automatically based on pre-defined conditions such as CPU usage or incoming network traffic.
+
+```bash
+# AWS CLI command to update an existing Auto Scaling group
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name my-asg --min-size 1 --max-size 5
 ```
 
-In this example, we define a `null_resource` with the name `example`. The `local-exec` provisioner will run the command specified (`echo Hello, World`) on your local machine when you apply this Terraform configuration.
+#### Vertical Scaling with AWS RDS
 
-### Mini-Exercise: Use `null_resource` to Print a Message
+AWS RDS allows you to resize your database instances to better meet your application's needs. For instance, you could switch from a `db.t2.micro` to a `db.m4.large` instance type, thus vertically scaling your database.
 
-1. **Initialize the Terraform Project**: Navigate to a new directory and run `terraform init`.
-2. **Write the Code**: Create a file named `main.tf` and copy the example code into it.
-3. **Plan the Infrastructure**: Run `terraform plan` to preview what changes will be made.
-4. **Apply the Infrastructure**: Run `terraform apply` and confirm by typing `yes`.
-
-After completing these steps, you should see the message "Hello, World" printed in your terminal, confirming that the `null_resource` was successfully applied.
-
-## Terraform Modules
-
-### What Are Terraform Modules?
-
-Terraform modules encapsulate a piece of Terraform configuration into a reusable, shareable unit. This allows for better organization and abstraction of Terraform code. More details can be found in the [Terraform Modules Documentation](https://developer.hashicorp.com/terraform/language/modules).
-
-### Why Are Terraform Modules Needed?
-
-- **Reuse of Code**: Avoid repetition of similar blocks of code in different parts of the project.
-- **Simplified Configuration**: Hide the complexity of your setup by exposing only the most relevant variables.
-- **Version Control**: Modules can be versioned, and you can specify which version to use in your main configuration.
-
-### Why Are Modules Good?
-
-1. **Modularity**: As the name suggests, Terraform modules bring modularity to your infrastructure. You can encapsulate a whole set of functionalities and features into one module.
-2. **Reusability**: Once you've written a module for a specific piece of infrastructure, you can reuse it across multiple environments or even multiple projects.
-3. **Maintainability**: Using modules makes your Terraform configuration easier to maintain. If a change is needed for a specific piece of infrastructure, you can make the change in just one place.
-
-For best practices on writing modules, check the [Terraform Module Best Practices](https://developer.hashicorp.com/terraform/language/modules/develop).
-
-### Structure of a Terraform Module
-
-A typical module directory structure looks like this:
-
-```plaintext
-my_terraform_module/
-|-- main.tf
-|-- variables.tf
-|-- outputs.tf
-|-- README.md
+```bash
+# AWS CLI command to modify an RDS instance
+aws rds modify-db-instance --db-instance-identifier mydbinstance --db-instance-class db.m4.large
 ```
 
-- `main.tf` contains the core resource declarations.
-- `variables.tf` contains any input variables that the module accepts.
-- `outputs.tf` contains any output variables that the module will produce.
-- `README.md` contains documentation for the module.
+### Load Balancing with AWS ELB
 
-### Example: A Simple AWS S3 Bucket Module
+AWS Elastic Load Balancer (ELB) distributes incoming traffic across multiple EC2 instances. ELB can be an essential part of both horizontal and vertical scaling strategies.
 
-To help you understand how a Terraform module works, let's create a simple example of an AWS S3 bucket module. The example includes two parts:
+### Elasticity and Provisioning with AWS S3
 
-1. The code for the module itself.
-2. How to use the module in a Terraform script.
+AWS S3 is designed to scale automatically. It automatically partitions your buckets as they grow, without any need for manual intervention. S3 also offers provisioned capacity for demanding workloads.
 
-#### Code for the Module
+### State Management in AWS RDS
 
-First, let's define the module. Create a new directory for the module and inside it, create a `main.tf` file with the following content:
+Managing state in scalable systems is crucial. AWS RDS supports Multi-AZ deployments enhancing high availability and failover support for DB instances.
 
-```hcl
-provider "aws" {
-  region = "eu-west-1"
-}
+For more detailed information on AWS scalability strategies, you can refer to the [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/).
 
-resource "aws_s3_bucket" "this" {
-  bucket = var.bucket_name
-  acl    = "private"
+By understanding and implementing these AWS-specific concepts, you'll be better prepared to build scalable and reliable cloud-based applications.
 
-  tags = {
-    Name        = var.bucket_name
-    Environment = var.environment
-  }
-}
+## Setting up Monitoring Tools
 
-output "bucket_arn" {
-  value = aws_s3_bucket.this.arn
-}
+Monitoring is crucial for understanding the behavior of your applications and infrastructure, particularly in cloud environments where many components work together to deliver an application. Monitoring not only helps you to diagnose and fix issues faster, but it also plays a pivotal role in optimizing performance and planning for scalability.
+
+### Why is Monitoring Important?
+
+- **Performance Tuning**: Real-time data helps you understand how well your system is performing and where bottlenecks may be forming.
+
+- **Issue Identification**: Proactive monitoring can alert you to issues before they impact your users, allowing for quicker resolution.
+
+- **Security**: Monitoring can help identify unauthorized access or anomalies that could indicate a security breach.
+
+### Observability
+
+Observability is the ability to understand the internal state of your system just by examining its outputs. An observable system makes it easier to identify the root causes of failures and debug or optimize code. Observability is often considered the superset of monitoring, logging, and other diagnostic activities.
+
+### Monitoring with AWS CloudWatch
+
+[AWS CloudWatch](https://aws.amazon.com/cloudwatch/) is a robust monitoring solution that allows you to collect and track metrics, collect and monitor log files, and set alarms. CloudWatch can monitor AWS resources like EC2 instances, RDS databases, and S3 buckets, as well as custom metrics generated by your applications.
+
+Using AWS CloudWatch, you can create dashboards to visualize metrics, set thresholds for alarms, and even automatically react to changes in your AWS resources.
+
+By setting up monitoring tools and learning the importance of observability, you are taking proactive steps to maintain high availability and performance of your cloud services and applications.
+
+## Creating Alerts and Understanding Metrics
+
+Alerting is a key aspect of monitoring; it allows you to know in real-time if something goes wrong or if a certain performance threshold has been met or exceeded. By creating alerts, you make your system more resilient and reduce the time needed to respond to incidents.
+
+### Creating Alerts with AWS CloudWatch
+
+[AWS CloudWatch](https://aws.amazon.com/cloudwatch/) provides a feature to set up alerts based on specific conditions or thresholds. These alerts can then be forwarded to other AWS services like SNS for notifications via email, SMS, or other methods.
+
+To create an alert in CloudWatch:
+
+1. Open the CloudWatch console in your AWS Management Console.
+2. In the navigation pane, choose "Alarms," then choose "Create Alarm."
+3. Choose "Select metric" and specify the metric and conditions for your alarm.
+
+```bash
+# AWS CLI example to create a CPU utilization alarm for an EC2 instance
+aws cloudwatch put-metric-alarm --alarm-name cpu-high --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 300 --threshold 70 --comparison-operator GreaterThanThreshold  --dimensions Name=InstanceId,Value=i-12345678 --evaluation-periods 2
 ```
 
-Create a `variables.tf` file to declare the input variables:
+### Metrics to Monitor in EC2 and RDS
 
-```hcl
-variable "bucket_name" {
-  description = "The name of the bucket"
-  type        = string
-}
+#### EC2
 
-variable "environment" {
-  description = "The environment this bucket will be part of"
-  type        = string
-  default     = "dev"
-}
-```
+- **CPU Utilization**: Measures the compute power required by an EC2 instance.
+- **Disk Read/Writes**: Monitors the read and write operations on the instance storage.
+- **Network In/Out**: Measures the network traffic to and from the instance.
 
-#### Using the Module
+[More on EC2 CloudWatch Metrics](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html)
 
-To use this module in a Terraform script, create a `main.tf` in a different directory and refer to the module like this:
+#### RDS
 
-```hcl
-module "s3_bucket" {
-  source       = "./path/to/module/directory"
-  bucket_name  = "my-new-bucket"
-  environment  = "prod"
-}
+- **CPU Utilization**: Measures the compute power used by your database instance.
+- **Database Connections**: The number of database connections in use.
+- **Free Storage Space**: Monitors the available storage space of your database instance.
 
-output "new_bucket_arn" {
-  value = module.s3_bucket.bucket_arn
-}
-```
-
-Run `terraform init` and `terraform apply` to create the S3 bucket using your module.
-
-This example should give you a good understanding of how to create a basic Terraform module and how to use it. For more detailed information, you can refer to the [Terraform AWS S3 Bucket Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) and [Terraform Modules Documentation](https://developer.hashicorp.com/terraform/language/modules).
-
-## Terraform State Management and Backends
-
-### What is Terraform State?
-
-Terraform uses a state file to keep track of the current status of your infrastructure. This state file maps the resources in your configuration to real-world resources, providing a way to store attributes and manage resource properties. It is crucial to understand how Terraform handles this state, especially as you work on larger projects.
-
-### Local vs. Remote State
-
-By default, Terraform stores the state file in the local filesystem. However, for any significant project or team-based work, a remote backend is recommended. Remote backends like AWS S3, Azure Blob Storage, or Google Cloud Storage allow you to store the Terraform state in a centralized, shared, and secure location.
-
-### Locking State
-
-State locking prevents others from acquiring the lock and ensures that multiple users can't make conflicting changes. Locking is automatically handled in some backends like AWS S3 when used in conjunction with a DynamoDB table.
-
-### AWS S3 as a Backend with DynamoDB Locking
-
-Here is a basic example of how you can set up AWS S3 as a backend for storing your Terraform state file, and use AWS DynamoDB for state locking:
-
-```hcl
-terraform {
-  backend "s3" {
-    bucket  = "my-terraform-state-bucket"
-    key     = "terraform.tfstate"
-    region  = "eu-west-1"
-    dynamodb_table = "my-lock-table"
-  }
-}
-```
-
-This configuration tells Terraform to use an S3 bucket named my-terraform-state-bucket and a DynamoDB table named my-lock-table for state locking.
-
-For more details on various aspects of Terraform state management, you can read the following sections from the official Terraform documentation:
-
-- [General State Management](https://developer.hashicorp.com/terraform/language/state)
-- [S3 Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
-- [State Locking with DynamoDB](https://developer.hashicorp.com/terraform/language/settings/backends/s3#dynamodb-state-locking)
-
-These resources will give you a comprehensive understanding of how to manage Terraform state effectively, including using remote backends like AWS S3 and state locking mechanisms like DynamoDB.
+[More on RDS CloudWatch Metrics](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MonitoringOverview.html)

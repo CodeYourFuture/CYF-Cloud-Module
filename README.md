@@ -22,5 +22,6 @@ brew install hugo
 ### To run locally
 
 ```bash
+npm i
 hugo server
 ```
