@@ -4,5 +4,5 @@ description = 'entry criteria for the module'
 layout = 'week'
 emoji= '📝'
 menu_level = ['module']
-weight = 2
+weight = 5
 +++
