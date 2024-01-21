@@ -19,7 +19,7 @@ You must already have a project (e.g. CYF Hotel project, Full Stack Assessment) 
 - A Database (e.g. a Postgres or MySql or MongoDB Database)
 - We recommend using the "CYF Hotel" project from the course but you are welcome to use any project you like. This could be your final project from the Full Stack course or a project you've built in your own time.
 
-You may already have this project deployed to a public hosting such as Render or Netlify. If you do, great - you're ready to go!
+You may already have this project deployed to a public hosting such as Render or Netlify. If you do, great - use that as the basis for this work!
 
 If you do not have a project, please speak to your teacher or the module leader.
 
