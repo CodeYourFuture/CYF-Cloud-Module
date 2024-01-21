@@ -64,7 +64,7 @@ To do this you will need to:
 
 ## Connect all Resources
 
-Now that you have all three elements of the CYF Hotel deployed, it's time to connect them together.
+Now that you have all three elements of your project deployed, it's time to connect them together.
 
 1. **Update** your frontend code to make API calls to your backend
 2. **Update** your backend code to connect to the database.
