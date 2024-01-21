@@ -1,5 +1,5 @@
 +++
-title = 'module entry criteria'
+title = 'entry criteria'
 description = 'entry criteria for the module'
 layout = 'week'
 emoji= '📝'

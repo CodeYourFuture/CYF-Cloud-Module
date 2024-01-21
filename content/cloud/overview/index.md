@@ -1,6 +1,5 @@
 +++
 title = 'overview'
-description = 'overview'
 layout = 'prep'
 emoji= '📝'
 menu_level = ['module']
@@ -8,8 +7,6 @@ weight = 1
 coursework= 'Module-cloud'
 coursework_filter= 'cloud'
 +++
-
-## Overview
 
 This module is designed to introduce the concepts of cloud computing and how it can be used to support the development of software. By the end of this module a Trainee should be able to:
 
@@ -20,9 +17,22 @@ This module is designed to introduce the concepts of cloud computing and how it 
 - Dockerise an application and deploy it to the cloud
 - Use Infrastructure-as-Code to setup and manage cloud resources
 
+### Entry Criteria
+
+To be able to start this module **a Trainee must have independently completed all of the steps in the entry criteria page** of this website.
+
+A Trainee will have been expected to have received help from Volunteers to be able to do this. This could include
+
+- Help with setting up their AWS account
+- Debugging help
+- Discussions to help understand concepts.
+
+However - importantly - a Trainee should have completed all of the steps themselves.
+
 ### Module Delivery
 
 This module has been written with the following delivery in mind:
 
+- **Guide, don't do**: Volunteers should aim to guide the Trainee to the answer through questioning, rather than doing the work for them.
 - **No Lectures**: All sessions should be discussion based, with Trainees leading the discussion through questioning working through problems they are facing.
-- **Trainee Led**: Trainees should be encouraged to work through the content in their own time, with sessions being used to discuss any issues they are facing.
+- **Trainee Led**: Trainees should be expected to work through the content in their own time, with sessions being used to discuss any issues they are facing.

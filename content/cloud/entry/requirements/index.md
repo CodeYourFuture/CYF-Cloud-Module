@@ -12,7 +12,9 @@ By the end of the coursework you should have the CYF Hotel Frontend, Backend and
 
 ## Deploy CYF Hotel Frontend to S3
 
-In this section, you will deploy the CYF Hotel frontend to S3. When you have done this successfully, you should be able to access the frontend using the S3 endpoint.
+In this section, you will deploy the CYF Hotel frontend to S3.
+
+When you have done this successfully, you should be able to access the frontend using the S3 endpoint.
 
 To do this you will need to:
 
@@ -24,7 +26,9 @@ To do this you will need to:
 
 ## Deploy CYF Hotel Backend to EC2
 
-Next, you will deploy the CYF Hotel backend to an EC2 instance. When you have done this successfully, you should be able to access the backend using the EC2 instance's public IP address.
+Next, you will deploy the CYF Hotel backend to an EC2 instance.
+
+When you have done this successfully, you should be able to access the backend using the EC2 instance's public IP address.
 
 To do this you will need to:
 
@@ -37,7 +41,9 @@ To do this you will need to:
 
 ## Deploy CYF Hotel Database to RDS
 
-Finally, you will deploy the CYF Hotel database to RDS. When you have done this successfully, you should be able to access the database using the RDS endpoint.
+Finally, you will deploy the CYF Hotel database to RDS.
+
+When you have done this successfully, you should be able to access the database using the RDS endpoint.
 
 To do this you will need to:
 
@@ -52,6 +58,8 @@ To do this you will need to:
 
 Now that you have all three elements of the CYF Hotel deployed, it's time to connect them together.
 
-1. Update your frontend code to make API calls to your backend
-2. Update your backend code to connect to the database.
-3. Test your application to ensure that everything is working as expected.
+1. **Update** your frontend code to make API calls to your backend
+2. **Update** your backend code to connect to the database.
+3. **Test** your application to ensure that everything is working as expected.
+
+When this is all working; your full stack application should now be accessible over the interview; via AWS.
