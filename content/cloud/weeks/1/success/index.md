@@ -10,10 +10,18 @@ coursework_filter= 'Week 1'
 
 By the end of this week, you should be able to:
 
+#### General Understanding
 
-- [ ] **Explain the Basics of Cloud Computing**: Understand what cloud computing is, and how it's different from traditional computing.
-- [ ] **Identify Different AWS Services**: Be able to name and describe what AWS EC2, S3, and RDS are used for.
-- [ ] **Demonstrate Practical Skills in AWS**: Successfully deploy a frontend application to S3, a backend application to EC2, and a database to RDS.
-- [ ] **Understand the Importance of Cloud Databases**: Describe why databases in the cloud can be beneficial and name at least two advantages.
-- [ ] **Articulate Basic Cloud Terminology**: Understand and use terms like "instance", "bucket", "security group", and "availability zone".
-- [ ] **Navigate AWS Console**: Comfortably navigate through the AWS Management Console to locate and interact with different services.
+- [ ] Explain CI/CD: Clearly articulate what Continuous Integration and Continuous Deployment/Delivery are and why they are important in software development.
+
+- [ ] Understand GitHub Actions: Describe what GitHub Actions is and its key components, including workflows, jobs, steps, and actions.
+
+#### Skills and Implementation
+
+- [ ] Create a Simple Workflow: Successfully set up a basic CI/CD pipeline using GitHub Actions in a GitHub repository. This includes writing a YAML file that specifies the actions to be taken when code is pushed to the repository.
+
+- [ ] Integrate Testing: Implement automated testing within your GitHub Actions workflow, demonstrating that you can integrate existing test scripts to run automatically
+
+- [ ] Automate Deployment: Integrate deployment scripts into the GitHub Actions workflow, automating the deployment process to a specified environment.
+
+- [ ] Sequential Jobs: Implement a multi-job workflow where jobs run sequentially, based on dependencies and requirements. Use the needs keyword to specify job dependencies.

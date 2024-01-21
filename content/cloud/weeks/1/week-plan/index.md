@@ -8,182 +8,186 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 1'
 +++
 
-## Exploring Servers and Virtual Machines
+## Introduction to CI/CD Concepts
 
-### What is a Server?
+### What are CI and CD?
 
-A server is a specialized computer designed to process requests and deliver data to another computer over the internet or a local network. While any computer can technically be configured to act as a server, most servers are dedicated, meaning they perform no other tasks than server duties.
+**CI**, or Continuous Integration, is a development practice where developers integrate code into a shared repository frequently. This usually happens multiple times a day and is complemented by automated tests.
 
-The fundamental role of a server remains consistent, but how we deploy and manage servers has evolved with the advent of cloud computing.
+**CD**, or Continuous Deployment/Delivery, takes the code changes from a repository, automatically builds and tests them, and then automatically deploys the tested code to a live service.
 
-#### On-Premise Servers
+These practices make it easier to catch bugs earlier and make deployments faster and more reliable.
 
-On-premise servers are physically located within an organization's premises. This traditional setup often requires a supporting infrastructure, including cooling systems and physical security measures. There's a high upfront capital expense due to the need for physical hardware, infrastructure, and ongoing maintenance. While it can offer optimized performance for internal users since data doesn't traverse outside the local network, it comes with the responsibility of direct maintenance and more rigid scalability. One distinct advantage is that organizations have maximum control and customization possibilities because they have direct access to the hardware.
+## Learning GitHub Actions Basics
 
-#### Cloud Servers
+### What are GitHub Actions?
 
-In contrast, cloud servers run in a cloud computing environment and can be accessed remotely. Examples include Amazon EC2 instances or Microsoft Azure VMs. Unlike on-premise servers, cloud servers operate mainly on a pay-as-you-go model, eliminating high upfront costs. This model also offers rapid scalability; organizations can easily scale up or down based on demand without manual intervention for hardware provisioning. Maintenance is more manageable in the cloud. Providers handle most of the maintenance tasks, including software updates, security patches, and managing the physical infrastructure. The cloud model grants organizations flexibility, scalability, and potential cost savings, which is why many are transitioning to this setup.
+GitHub Actions is an automation framework that runs in your GitHub repository. It can build, test, and deploy your code right from GitHub.
 
-#### Key Characteristics of Servers
+#### Key Components
 
-High Reliability: Built to be robust and reliable in handling various tasks under different conditions.
-Scalability: Capable of being expanded in size or volume to handle increased loads.
-Security: Equipped with advanced security protocols to protect data and resources.
+**Workflows**: Orchestrates your CI/CD process.
+**Jobs**: Sets of steps that execute sequentially.
+**Steps**: Individual tasks within a job.
+**Actions**: Pre-built steps that you can use in your jobs.
 
-### Virtualization
+#### Exercise: Review a github action from previous coursework
 
-Virtualization is the technology that lets you create multiple simulated environments or dedicated resources from a single, physical hardware system, making your infrastructure far more efficient and scalable.
+Github Actions have been present in the course, now we are going to take a look at them and review them.
 
-#### Types of Virtualization
+Back in Javascript 1 Week 1, we can see an existing workflow for mandatory tests: <https://github.com/CodeYourFuture/JavaScript-Core-1-Coursework-Week1/blob/master/.github/workflows/mandatory-tests.yml>
 
-- **Server Virtualization**: Multiple operating systems can run on a single physical server as highly efficient virtual machines.
+You should have completed the Coursework for Javascript 1 Week 1, this exercise is for you to find your pull request and see the Github Action workflow. Go to <https://github.com/CodeYourFuture/JavaScript-Core-1-Coursework-Week1> to find your Pull Request or go directly to the Actions <https://github.com/CodeYourFuture/JavaScript-Core-1-Coursework-Week1/actions> to find your workflow run.
 
-- **Network Virtualization**: A complete reproduction of a physical network, enabling a software-based network to run alongside a hardware-based network.
+## Setting up a Simple Workflow
 
-- **Storage Virtualization**: Pooling multiple physical storage devices into a single virtual storage device managed from a single console.
+To set up a simple GitHub Actions workflow, navigate to your GitHub repository and then to the Actions tab. From there, you can create a new workflow.
 
-### What are Virtual Machines (VMs)?
+Here's a basic example:
 
-Virtual Machines (VMs) are software emulations of physical computers. They include a virtual processor, memory, storage, and networking resources. VMs run on a physical host and are managed by a hypervisor, which controls the distribution of resources.
+```yaml
+name: CI
 
-#### Advantages of VMs
+on: [push]
 
-- **Isolation**: VMs provide an isolated environment to run applications. If one VM fails or has issues, it doesn’t affect the others.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+```
 
-- **Resource Optimization**: VMs make efficient use of hardware, as multiple VMs can be run on a single physical server.
+This YAML file specifies a single job called build that runs on an ubuntu-latest runner machine. The job has a single step that uses actions/checkout@v3 to download the code from the GitHub repository.
 
-- **Cost-Efficiency**: VMs reduce costs related to hardware, energy, and cooling.
+For more information on Github Actions Syntax refer to their documentation: <https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions>
 
-### Introduction to AWS EC2
+## Adding Testing Stages
 
-Amazon Elastic Compute Cloud (Amazon EC2) is one of the most widely-used services provided by Amazon Web Services (AWS). EC2 provides scalable computing resources in the cloud, essentially offering virtual machines—known as "instances"—that can be tailored for different types of applications and workloads.
+Testing is crucial in CI/CD pipelines. GitHub Actions can automatically run your tests every time someone pushes to your repository.
 
-#### AWS EC2 Key Features
+For example, if you're using Node.js and Jest for your tests:
 
-- **Instance Types**: EC2 provides a wide variety of instance types optimized for different use-cases, ranging from compute-optimized to storage-optimized instances. This allows you to choose the right kind of computing environment based on your application needs.
+```yaml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
+```
 
-- **Elastic Load Balancing**: This feature automatically distributes incoming traffic across multiple instances for better performance and fault tolerance.
+## Adding Deployment Stages
 
-- **Security Groups**: These act as virtual firewalls that control the traffic to your instance, allowing you to specify rules based on IP protocol, port number, and source/destination IP address or CIDR block.
+Once your code has been built and tested, you can deploy it automatically using GitHub Actions.
 
-- **AMI (Amazon Machine Image)**: These are pre-configured templates for your instances. You can launch an instance with an AMI containing the operating system, application server, and applications required.
+Here's a simplified example:
 
-- **EBS (Elastic Block Store)**: Provides block storage that can be used with EC2 instances. EBS volumes can easily be resized and offer high availability and durability.
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: npm deploy
+```
 
-- **Elastic IPs**: These are static, public IPv4 addresses that you can allocate or release on-demand. Unlike traditional static IP addresses, Elastic IPs allow you to mask the failure of an instance or software by rapidly remapping the address to another instance in your account.
+In this example, we use a custom command script for deploy. In your package.json you will have a section for scripts:
 
-- **Auto Scaling**: This feature enables you to automatically adjust the number of EC2 instances available to your application. You can set conditions for scaling out (adding instances) or scaling in (removing instances).
+```json
+  "scripts": {
+    "deploy": "echo this is a deploy",
+  }
+```
 
-- **Pricing Models**: EC2 offers various pricing options like On-Demand, Reserved Instances, and Spot Instances, allowing flexibility in managing costs.
+### Creating a Workflow with Multiple Jobs
 
-#### AWS EC2 Benefits
+In a real-world scenario, you often need multiple jobs to run different tasks in parallel or sequentially to speed up the process or manage dependencies. In this section, you'll learn how to set up a workflow with multiple jobs.
 
-- **Flexibility and Scalability**: EC2 allows you to scale your computing capacity based on the demands of your application.
+#### Example: npm test and Deployment
 
-- **Cost-Efficiency**: With a variety of pricing models, you can optimize costs based on your specific needs.
+Here's an example YAML configuration file for a GitHub Actions workflow that has two jobs: one for running tests and another for deployment.
 
-- **Security**: Built-in security features like Security Groups and Network ACLs provide robust protection to your instances.
+```yaml
+name: CI/CD Pipeline
 
-- **Integration**: EC2 is well-integrated with other AWS services, making it easier to create a full-fledged application architecture in the cloud.
+on: [push]
 
-#### AWS EC2 Limitations
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
 
-Cost Complexity: While flexible, the pricing models can be complex to understand fully and may lead to unexpected costs if not managed properly.
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Deploy
+        run: npm deploy
+```
 
-Resource Limits: AWS imposes certain limitations on the number of instances or type of resources you can use, although these can usually be increased upon request.
+Understanding the Workflow
+**jobs**: Contains two job blocks: test and deploy.
+**runs-on**: Specifies the type of runner that the job will run on.
+**steps**: The sequence of tasks that will be executed in each job.
+**needs**: This key in the deploy job specifies that it needs the test job to complete successfully before it starts.
 
-By understanding the features, benefits, and limitations of AWS EC2, you'll be better equipped to make informed decisions about how to use this service effectively for different types of cloud-based solutions.
+By defining both jobs in the same YAML file, GitHub Actions will know to run them as part of the same workflow. The needs keyword ensures that the deploy job will only run if the test job completes successfully, adding a layer of protection against bugs making their way into production.
 
-For more information about Amazon EC2 refer to their official documentation at <https://aws.amazon.com/ec2/>
+And that's how you set up a GitHub Actions workflow with multiple jobs. This allows you to make your CI/CD process more robust and maintainable.
 
-## Understanding Cloud Storage Solutions
+### Environment Variables and Secrets
 
-### What is Cloud Storage?
+In any development workflow, especially one that involves deployments, it's common to have configuration settings that should not be hard-coded in the codebase. This includes API keys, database URLs, and other sensitive information. GitHub Actions allows the use of environment variables and secrets to manage these configurations securely.
 
-Cloud storage is a model of storing data where the digital data is stored in logical pools, across a network of physical servers. These servers are typically owned and managed by hosting companies that provide cloud storage services.
+#### Github Environment Variables
 
-#### Key Features of Cloud Storage
+Environment variables are key-value pairs that you can create and modify as part of your workflow. They can be accessed in your GitHub Actions YAML file via env context. For example, to set a Node.js environment, you can do:
 
-- **Accessibility**: Data can be accessed from anywhere with an internet connection.
-- **Scalability**: Offers flexible storage capacity.
-- **Redundancy**: Multiple backup options.
-- **Security**: Data encryption and secure access controls.
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+```
 
-### Types of Cloud Storage
+And then use it in a script like this:
 
-- **Object Storage**: Ideal for unstructured data like photos, videos.
-- **Block Storage**: Used for database storage, application storage.
-- **File Storage**: For shared file systems and document storage.
+```yaml
+- name: Using Environment Variable
+  run: echo Node environment is ${{ env.NODE_ENV }}
+```
 
-### Introduction to AWS S3
+#### Github Secrets
 
-Amazon Simple Storage Service (S3) is an object storage service that offers industry-leading scalability, data availability, security, and performance.
+Secrets are similar to environment variables but are encrypted and only exposed to selected actions, adding an extra layer of security. They are ideal for storing sensitive data like passwords and API keys.
 
-#### AWS S3 Key Features
+You can add secrets via GitHub by navigating to your repository, then clicking on _Settings_ -> _Secrets_ -> _New Repository Secret_. Enter the secret's name and value, and it will be encrypted and stored securely.
 
-- **Buckets**: S3 uses containers called 'buckets' to store your files.
-- **Object Lifecycle Management**: Set policies to auto-transfer data to cheaper storage classes or archive them.
-- **Versioning**: Keeps multiple variants of an object in the same bucket.
-- **Data Transfer Acceleration**: Quickly upload files to your bucket.
-- **Serverless**: Can trigger AWS Lambda functions.
-- **Security**: Offers features like bucket policies and IAM to restrict access.
-- **Strong Consistency**: Automatically for all objects, including overwrite PUTS and DELETES.
+To use a secret, you refer to it using secrets context in your YAML file like this:
 
-#### AWS S3 Benefits
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Accessing secret
+        run: echo Accessing secret ${{ secrets.MY_SECRET }}
+```
 
-- **Durability and Availability**: 99.999999999% (11 9's) durability.
-- **Scalability**: Handles large data volumes.
-- **Cost-Efficiency**: Pay only for the storage you use.
+In the example above, MY_SECRET would be replaced by the actual secret's name you've stored in the GitHub repository.
 
-#### AWS S3 Limitations
-
-- **Cost Complexity**: Pricing can be complex.
-- **Permissions Complexity**: Powerful but complex permissions system.
-
-For more information about Amazon S3 refer to their official documentation at <https://aws.amazon.com/s3/>
-
-## Learning about Cloud Databases
-
-### What are Cloud Databases?
-
-Cloud databases are databases that run on a cloud computing platform, rather than on an on-premises physical server. They provide a way to store, manage, and retrieve data through a cloud service, making it accessible over the internet.
-
-#### Key Features of Cloud Databases
-
-- **Accessibility**: Easily accessed from anywhere through a web interface or API.
-- **Scalability**: Can easily scale resources up or down based on demand.
-- **Managed Service**: Includes automatic backups, updates, and maintenance.
-- **Multi-Tenancy**: Allows multiple users or "tenants" to share a database instance.
-
-### Types of Cloud Databases
-
-- **SQL Databases**: For structured data and supports SQL querying (e.g., MySQL, PostgreSQL).
-- **NoSQL Databases**: For unstructured data and supports non-SQL querying (e.g., MongoDB, DynamoDB).
-- **NewSQL Databases**: Blend of SQL and NoSQL features.
-
-### Introduction to AWS RDS
-
-**Amazon Relational Database Service (RDS)** is a cloud-based relational database service that supports multiple types of database engines. It's part of Amazon's robust suite of cloud services.
-
-#### Key Features
-
-- **Managed Service**: Takes care of routine database tasks such as maintenance, backup, and patch management.
-- **Scalability**: Easily resizable and supports automatic scaling.
-- **Multi-AZ Deployments**: For high availability.
-- **Security**: Offers features like encryption, IAM roles, and VPC to secure your databases.
-- **Monitoring**: Provides in-depth monitoring through CloudWatch.
-
-#### AWS RDS Benefits
-
-- **Ease of Use**: Simplifies database management tasks.
-- **High Availability**: Multiple availability zones for redundancy.
-- **Performance**: Built-in performance metrics and tuning recommendations.
-
-#### AWS RDS Limitations
-
-- **Cost**: Can be expensive for large-scale deployments.
-- **Limited Customization**: Not as customizable as running your own database on an EC2 instance.
-
-Understanding AWS RDS can equip you with the knowledge to make informed choices for implementing your cloud-based database solutions.
-
-For more information about Amazon RDS refer to their official documentation at <https://aws.amazon.com/rds/>
+For more information about environment variable refer to their documentation: <https://docs.github.com/en/actions/learn-github-actions/variables> and for information about secrets refer to: <https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions>

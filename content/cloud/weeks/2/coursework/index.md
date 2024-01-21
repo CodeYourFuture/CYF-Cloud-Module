@@ -8,22 +8,36 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 2'
 +++
 
-## Setup Github Actions for CYF Hotel Frontend deployments to S3
+## Dockerize CYF Hotel
 
-Create GitHub Actions Workflow File: In your CYF Hotel repository, create a new YAML file under the .github/workflows directory. Name it something relevant, like frontend-s3-deploy.yml.
+The main aim of this week work is to become familiar with Docker Concepts and be able to use it to a base level. To achieve this, we'll keep working on our CYF Hotel.
 
-Configure AWS Credentials: Utilize GitHub Secrets to securely store your AWS credentials. These secrets will be used in the GitHub Actions workflow to authenticate against AWS.
+## Prep
 
-Write S3 Deployment Steps: In the YAML file, define the steps to install AWS CLI, configure AWS credentials, and sync your build folder to your S3 bucket.
+Ensure you complete the prep part and your Docker daemon is working correctly before continuin.
 
-Test the Workflow: Push a change to your repository or manually run the workflow from the GitHub Actions tab to verify that the S3 deployment works as expected.
+### Docker Backend
 
-## Setup Github Actions for CYF Hotel Backend deployments to EC2
+Start working on dockerising your application backend. Create a Dockerfile, set it up for node and replicate your setup and install steps that were manual so far in there. Iterate until you get it to run successfully as a Docker Container locally. Hint: Remember port forwarding!
 
-Create GitHub Actions Workflow File: Similar to the frontend, create a new YAML file in your CYF Hotel repository under .github/workflows, and name it appropriately, like backend-ec2-deploy.yml.
+Once successful, upload your created Docker Image to either your DockerHub account or (advanced) AWS's ECR.
+Once done, Update your EC2 instance to now run your backend as a container. Hint: You will need to set up Docker on the VM itself for this to work
 
-Configure AWS and SSH Credentials: Store your AWS and SSH credentials securely using GitHub Secrets. These will be used to authenticate and connect to your EC2 instance.
+### GitHub Pipelines
 
-Write EC2 Deployment Steps: Outline the steps in the YAML file for SSHing into your EC2 instance, pulling the latest code, and restarting your backend service.
+Once this is done and working fully, time to automate it - rework your Github Actions Workflow to test, build and upload your Docker image, and then deploy the new version to the EC2 machine.
 
-Test the Workflow: Like with the frontend, push a change to your repository or manually trigger the workflow from GitHub Actions to ensure that your backend is successfully deployed to the EC2 instance.
+### Local development (bonus)
+
+This step is a bonus one, if you completed all previous steps and are not behind on the previous weeks.
+
+Dockerise your Frontend, and have it run locally alongside via Docker with your backend. Can you get both to work correctly at the same time? Replicate the process for the database, and move it from your local instance to a local Docker Container (remember persistence via volumes).
+In both cases, managed AWS services (S3 and RDS) give us a lot of advantages for Cloud Deployment, but lack support for local development, and Docker can help with that.
+
+Imagine how you would automate, with a script, the process of rebuilding all 3 containers on changes, and restart/reconnect everything. Try to build it.
+
+## Docker Compose - base orchestration (bonus)
+
+Research Docker Compose, its syntax and a few examples. Think how it can help you orchestrate your 3 containers for local development, and then create a docker-compose file to use this tool to automatically build, start and network your containers. Find a way to specify dependencies, to ensure that the backend start initialising only when the database is up and running.
+
+If you want, you can experiment with running all 3 components in EC2 via Docker compose, but keep it as an experiment. Think about some advantages and disadvantages of the 2 approaches (all in a docker-compose file inside a EC2 instance vs using multiple managed services such as S3 and RDS)

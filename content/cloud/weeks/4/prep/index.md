@@ -8,54 +8,20 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 4'
 +++
 
-## Setup Terraform on Mac and Linux
+## Explore cloud provider's monitoring tool (AWS Cloudwatch)
 
-### Mac Installation Steps
+Before diving into the week's material, it's crucial to familiarize yourself with [AWS CloudWatch](https://aws.amazon.com/cloudwatch/), Amazon's monitoring and observability service. CloudWatch provides actionable insights to monitor applications, respond to system-wide performance changes, optimize resource utilization, and get a unified view of operational health.
 
-1. **Download the Terraform Binary**: Go to the [Terraform Downloads Page](https://developer.hashicorp.com/terraform/downloads) and download the package suitable for your macOS system.
+### Why AWS CloudWatch?
 
-2. **Unzip the Package**: Open your terminal and run:
+1. **Comprehensive Monitoring**: Provides a wide array of metrics for various AWS services.
+2. **Alerting**: Ability to set custom alerts based on thresholds or conditions.
+3. **Log Management**: Aggregate, monitor, and store logs.
+4. **Custom Dashboards**: Create custom dashboards to visualize metrics and trends.
 
-```bash
-unzip ~/Downloads/terraform_*_darwin_amd64.zip
-```
+### Tasks
 
-Replace `*` with the downloaded version.
-
-3. **Move to /usr/local/bin**: This allows any user to run the Terraform command.
-
-```bash
-mv terraform /usr/local/bin/
-```
-
-4. **Check the Installation**: Confirm Terraform is installed correctly.
-
-```bash
-terraform --version
-```
-
-### Linux Installation Steps
-
-1. **Download the Terraform Binary**: Go to the [Terraform Downloads Page](https://developer.hashicorp.com/terraform/downloads) and download the package suitable for your Linux system.
-
-2. **Unzip the Package**: Open your terminal and run:
-
-```bash
-unzip ~/Downloads/terraform_*_linux_amd64.zip
-```
-
-Replace `*` with the downloaded version.
-
-3. **Move to /usr/local/bin**: This makes the `terraform` command globally accessible.
-
-```bash
-sudo mv terraform /usr/local/bin/
-```
-
-4. **Check the Installation**: Confirm Terraform is installed correctly.
-
-```bash
-terraform --version
-```
-
-For more detailed instructions, you can refer to the [Terraform Installation Documentation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
+1. **Log in to AWS Management Console**: If you haven't already, sign in to your AWS account.
+2. **Navigate to CloudWatch**: Once logged in, find CloudWatch under the "Services" dropdown.
+3. **Explore Metrics**: Under the "Metrics" tab, explore the different namespaces and metrics available.
+4. **Check out Dashboards**: Go to the "Dashboards" section and look at any default dashboards.
