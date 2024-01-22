@@ -8,27 +8,20 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 2'
 +++
 
-# What success looks like for this module
+By the end of this week, you should be able to:
 
-Docker is a complex tool, with several facets. For this reason, there is a core, easier set of goals, and a set of stretch goals that can help you dive deeper **if you completed the core assignments and are not behind on previous weeks**.
+#### General Understanding
 
-By end of this module, you should be able to:
+- [ ] Explain CI/CD: Clearly articulate what Continuous Integration and Continuous Deployment/Delivery are and why they are important in software development.
 
-## General Understanding
+- [ ] Understand GitHub Actions: Describe what GitHub Actions is and its key components, including workflows, jobs, steps, and actions.
 
-- [] Explain in a few words what is Docker and why it is used.
-- [] Explain the difference between Dockerfiles, Docker Images, Docker Containers, and how they relate to each other.
-- [] Have a high level understanding of some of the advantages and disadvantages of using Docker for development.
+#### Skills and Implementation
 
-## Practical Skills
+- [ ] Create a Simple Workflow: Successfully set up a basic CI/CD pipeline using GitHub Actions in a GitHub repository. This includes writing a YAML file that specifies the actions to be taken when code is pushed to the repository.
 
-- [] Be able to Dockerise a Node application, and have it running locally successfully, including persistency if required.
-- [] Be able to deploy a Docker application to a EC2 VM both manually and via a Github pipeline.
+- [ ] Integrate Testing: Implement automated testing within your GitHub Actions workflow, demonstrating that you can integrate existing test scripts to run automatically
 
-## Completed Work
+- [ ] Automate Deployment: Integrate deployment scripts into the GitHub Actions workflow, automating the deployment process to a specified environment.
 
-The status of your project at the end of the week should look like this:
-
-- [] A Backend component in EC2, Dockerised and deployed via GitHub pipelines
-- [] A Frontend component in S3, Deployed via GitHub pipelines.
-- [] A Database component in DNS.
+- [ ] Sequential Jobs: Implement a multi-job workflow where jobs run sequentially, based on dependencies and requirements. Use the needs keyword to specify job dependencies.

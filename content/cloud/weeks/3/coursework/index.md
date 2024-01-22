@@ -8,62 +8,36 @@ coursework= 'Module-cloud'
 coursework_filter= 'Week 3'
 +++
 
-## Coursework: Infrastructure as Code for CYF Hotel
+## Dockerize CYF Hotel
 
-### Infrastructure as Code for CYF Hotel Frontend in S3
+The main aim of this week work is to become familiar with Docker Concepts and be able to use it to a base level. To achieve this, we'll keep working on our CYF Hotel.
 
-1. **Objective**: Use Terraform to deploy your CYF Hotel frontend to an S3 bucket.
-2. **Steps**:
-   - Write a Terraform configuration file (`main.tf`) to define the S3 bucket.
-   - Include the necessary configurations like ACL, policy, and versioning.
-   - Deploy the code to AWS.
-3. **Outcome**: After running `terraform apply`, you should see the CYF Hotel frontend live on the S3 bucket URL.
+## Prep
 
-### Infrastructure as Code for CYF Hotel Backend in EC2
+Ensure you complete the prep part and your Docker daemon is working correctly before continuin.
 
-1. **Objective**: Use Terraform to deploy your CYF Hotel backend to an EC2 instance.
-2. **Steps**:
-   - Write a Terraform configuration file (`main.tf`) to define the EC2 instance.
-   - Include configurations for security groups, key pairs, and IAM roles if necessary.
-   - Deploy the code to AWS.
-3. **Outcome**: After running `terraform apply`, the backend should be running on an AWS EC2 instance accessible via its IP address.
+### Docker Backend
 
-### Infrastructure as Code for CYF Hotel Database in RDS
+Start working on dockerising your application backend. Create a Dockerfile, set it up for node and replicate your setup and install steps that were manual so far in there. Iterate until you get it to run successfully as a Docker Container locally. Hint: Remember port forwarding!
 
-1. **Objective**: Use Terraform to deploy your CYF Hotel database to an RDS instance.
-2. **Steps**:
-   - Write a Terraform configuration file (`main.tf`) for the RDS database.
-   - Include necessary configurations like database engine, version, and credentials.
-   - Deploy the code to AWS.
-3. **Outcome**: After running `terraform apply`, the database should be live and reachable on the RDS instance.
+Once successful, upload your created Docker Image to either your DockerHub account or (advanced) AWS's ECR. 
+Once done, Update your EC2 instance to now run your backend as a container. Hint: You will need to set up Docker on the VM itself for this to work
 
-### Extra Exercise: Using Terraform Modules and Remote State
+### GitHub Pipelines
 
-#### Objective
+Once this is done and working fully, time to automate it - rework your Github Actions Workflow to test, build and upload your Docker image, and then deploy the new version to the EC2 machine.
 
-In this exercise, you will utilize a Terraform module to create a reusable configuration for S3 buckets. Additionally, you'll implement remote state management using an S3 bucket.
+### Local development (bonus)
 
-#### Steps
+This step is a bonus one, if you completed all previous steps and are not behind on the previous weeks.
 
-1. **Create a Terraform Module for S3 Buckets**
+Dockerise your Frontend, and have it run locally alongside via Docker with your backend. Can you get both to work correctly at the same time? Replicate the process for the database, and move it from your local instance to a local Docker Container (remember persistence via volumes).
+In both cases, managed AWS services (S3 and RDS) give us a lot of advantages for Cloud Deployment, but lack support for local development, and Docker can help with that.
 
-   - Create a new directory named `s3_module` and place a new Terraform file inside it, e.g., `main.tf`.
-   - Define the Terraform code for an S3 bucket inside this file.
+Imagine how you would automate, with a script, the process of rebuilding all 3 containers on changes, and restart/reconnect everything. Try to build it.
 
-2. **Implement Remote State in S3**
+## Docker Compose - base orchestration (bonus)
 
-   - In your main Terraform configuration (`main.tf`), configure the backend for remote state using S3.
+Research Docker Compose, its syntax and a few examples. Think how it can help you orchestrate your 3 containers for local development, and then create a docker-compose file to use this tool to automatically build, start and network your containers. Find a way to specify dependencies, to ensure that the backend start initialising only when the database is up and running.
 
-3. **Initialize and Apply**
-   - Initialize your Terraform project.
-   - Apply the configuration to create the S3 bucket using the module and configure remote state.
-
-#### Validation
-
-- Confirm that the S3 bucket was created as expected.
-- Check the S3 bucket where you store the remote state to ensure that the `terraform.tfstate` file is present.
-
-#### References
-
-- [Terraform Modules](https://developer.hashicorp.com/terraform/language/modules)
-- [Terraform S3 Backend](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
+If you want, you can experiment with running all 3 components in EC2 via Docker compose, but keep it as an experiment. Think about some advantages and disadvantages of the 2 approaches (all in a docker-compose file inside a EC2 instance vs using multiple managed services such as S3 and RDS)
